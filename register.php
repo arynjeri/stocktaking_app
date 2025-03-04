@@ -56,23 +56,32 @@ if (isset($_POST['register_username']) && isset($_POST['register_password']) && 
 <html>
 <head>
     <title>Register</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Register</h1>
-    <?php if (!empty($registration_error)) : ?>
-        <p><?php echo $registration_error; ?></p>
-    <?php endif; ?>
-    <form method="post" action="register.php">
-        <label for="register_username">Username:</label>
-        <input type="text" name="register_username" id="register_username" required><br><br>
-
-        <label for="register_password">Password:</label>
-        <input type="password" name="register_password" id="register_password" required><br><br>
-
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" name="confirm_password" id="confirm_password" required><br><br>
-
-        <input type="submit" value="Register">
-    </form>
+    <div id="registration_container">
+        <h1>Register</h1>
+        <?php if (!empty($registration_error)) : ?>
+            <p><?php echo $registration_error; ?></p>
+        <?php endif; ?>
+        <form method="post" action="register.php" id="registration_form">
+            <div class="row">
+                <label for="register_username">Username:</label>
+                <input type="text" name="register_username" id="register_username" required>
+            </div>
+            <div class="row">
+                <label for="register_password">Password:</label>
+                <input type="password" name="register_password" id="register_password" required>
+            </div>
+            <div class="row">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" name="confirm_password" id="confirm_password" required>
+            </div>
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+        <p class="login-link">Already have an account? <a href="login.php">Login</a></p>
+    </div>
 </body>
 </html>
