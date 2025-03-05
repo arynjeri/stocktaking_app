@@ -15,14 +15,6 @@ $loggedIn = isset($_SESSION['user_id']);
 </head>
 <body id="index">
 
-    <div class="top-links">
-        <a href="resource.php">Resource</a>
-        <a href="help.php">Help</a>
-        <a href="contact.php">Contact Us</a>
-        <?php if (isset($_SESSION['user_id'])) : ?>
-            <a href="profile.php">Profile</a>
-        <?php endif; ?>
-    </div>
 
     <nav class="navbar">
         <div class="logo">Stock App</div>
