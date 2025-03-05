@@ -5,35 +5,58 @@ session_start();
 $loggedIn = isset($_SESSION['user_id']);
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Stock Taking App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <nav>
-        <a href="index.php">Home</a>
+<body id="index">
+
+    <div class="top-links">
         <a href="resource.php">Resource</a>
+        <a href="help.php">Help</a>
         <a href="contact.php">Contact Us</a>
-        <?php if ($loggedIn) : ?>
-            <a href="profile.php">User Profile</a>
-            <a href="help.php">Help</a>
-            <a href="logout.php">Logout</a>
-        <?php else : ?>
-            <a href="login.php">Login</a>
-            <a href="register.php">Register</a>
-            <a href="help.php">Help</a>
+        <?php if (isset($_SESSION['user_id'])) : ?>
+            <a href="profile.php">Profile</a>
         <?php endif; ?>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">Stock App</div>
+        <ul class="nav-links">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="resource.php">Resource</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
+            <?php if (isset($_SESSION['user_id'])) : ?>
+                <li><a href="profile.php">User Profile</a></li>
+                <li><a href="help.php">Help</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            <?php else : ?>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="register.php">Register</a></li>
+                <li><a href="help.php">Help</a></li>
+            <?php endif; ?>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </nav>
 
-    <h1>Welcome</h1>
+    <div class="container">
+        <h1>Welcome</h1>
 
-    <?php if ($loggedIn) : ?>
-        <p>You are logged in.</p>
-    <?php else : ?>
-        <p>Please log in or register to access resources.</p>
-    <?php endif; ?>
-
+        <?php if (isset($_SESSION['user_id'])) : ?>
+            <p class="logged-in">You are logged in.</p>
+        <?php else : ?>
+            <p class="logged-out">Please log in or register to access resources.</p>
+        <?php endif; ?>
+        </div>
+   
+<script src="script.js"></script>     
 </body>
 </html>
